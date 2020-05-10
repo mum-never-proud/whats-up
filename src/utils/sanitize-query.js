@@ -3,13 +3,13 @@ function sanitizeQuery(queryString = '') {
     return [];
   }
 
-  const [query, keyword] = queryString.split(' ');
+  const [query, ...keyword] = queryString.split(' ');
 
   if (!query || !keyword) {
     return [];
   }
 
-  return [query.substring(1).trim().toLowerCase(), keyword.trim().toLowerCase()];
+  return [query.trim().toLowerCase(), keyword.join(' ').trim().toLowerCase()];
 }
 
 module.exports = sanitizeQuery;
