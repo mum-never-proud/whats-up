@@ -5,9 +5,13 @@ function formatResponse(type, data) {
     return '🙅 Sorry there are no result\'s for this search';
   }
 
-  const results = formatMap[type](data);
+  const message = formatMap[type](data);
 
-  return results.length ? results : '🙅 Sorry there are no result\'s for this search';
+  if (!message) {
+    return '🙅 Sorry there are no result\'s for this search';
+  }
+
+  return message;
 }
 
 module.exports = formatResponse;
